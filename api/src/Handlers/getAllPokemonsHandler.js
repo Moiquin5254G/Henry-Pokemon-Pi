@@ -2,9 +2,7 @@ const getPokemonByName = require('../Controllers/getPokemonByName');
 const getAllPokemons = require('../Controllers/getAllPokemons');
 
 const getAllPokemonsHandler = async(req, res) => {
-    console.log('algito');
     const { name } = req.query;
-    console.log(name);
 
     try {
         const results = name ? await getPokemonByName(name) : await getAllPokemons();

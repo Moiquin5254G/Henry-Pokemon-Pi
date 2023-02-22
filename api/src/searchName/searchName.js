@@ -1,25 +1,25 @@
 const { Pokemon, Type } = require('../db');
-require('dotenv').config();
-const LINK_API_POKEMONS = process.env;
+// require('dotenv').config();
+// const LINK_API_POKEMONS = process.env;
 const axios = require('axios');
-const { Sequelize } = require('sequelize');
+const cleanArray = require('../Controllers/cleanArray');
 
 const searchNameDb = async (name) => {
     try {
-        const searchPokemon = await Pokemon.findOne({
-            where: Sequelize.where(
-                Sequelize.fn('lower', Sequelize.col('pokemons.name')),
-                Sequelize.fn('lower', name)
-            ),
-
-            include: {
-                attributes: ["name"],
+        const result = await Pokemon.findOne({
+            where: {
+                name: name,
+            }, 
+            include: [{
                 model: Type,
-
-            }
-        });
-
-        return searchPokemon;
+                atrributes: ['name'],
+                through: {
+                    atrributes: []
+                }
+            }]
+        })
+        console.log(result);
+        return result;
     } catch (error) {
         return error;
     }
@@ -27,11 +27,11 @@ const searchNameDb = async (name) => {
 
 const searchNameApi = async (name) => {
     try {
-        const pokemonRaw = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`).
-            then((res) => res.data);
-        return await cleanArray([pokemonRaw]);
+        const data = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`)
+        const result = data.data;
+        return await cleanArray([result]);
     } catch (error) {
-        return ({ error: 'Not Found' });
+        return ({ error: 'Not Found, el papi' });
     }
 }
 
