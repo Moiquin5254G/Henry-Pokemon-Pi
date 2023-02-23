@@ -4,12 +4,11 @@ const { DataTypes, ConnectionAcquireTimeoutError } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Pokemon', {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+    id:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
-      allowNull: false,
-      // unique: true
+      unique: true
     },
     name: {
       type: DataTypes.STRING,
