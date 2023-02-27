@@ -6,7 +6,7 @@ const searchNameDb = async (name) => {
     try {
         const result = await Pokemon.findOne({
             where: {
-                name: name,
+                name: name.toLowerCase(),
             }, 
             include: [{
                 model: Type,
@@ -24,7 +24,7 @@ const searchNameDb = async (name) => {
 
 const searchNameApi = async (name) => {
     try {
-        const data = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`)
+        const data = await axios(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
         const result = data.data;
         return await cleanArray([result]);
     } catch (error) {

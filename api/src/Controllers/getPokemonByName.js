@@ -6,7 +6,7 @@ const getPokemonsByName = async(name) => {
         const pokeDb = await searchNameDb(name);
     
         if(!pokeApi.length && !pokeDb.length) {
-            throw new Error(`The pokemon with the name ${name} does not exits.`);
+            throw new Error(`The pokemon with the name ${name} does not exits😵😵!!`);
         } else {
             const pokemonName = [...pokeApi, pokeDb];
             return pokemonName;
