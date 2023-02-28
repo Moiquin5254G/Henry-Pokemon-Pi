@@ -1,9 +1,24 @@
 import './App.css';
+import { Detail } from './Components/Detail/Detail';
+import { Message } from './Components/Message/Message';
+import { Example } from './Components/Example/Example';
+import { HomePage } from './Components/HomePage/HomePage';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { LandingPage } from './Components/LandingPage/LandingPage';
+import { CreatePokemon } from './Components/CreatePokemon/CreatePokemon';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
+      <Switch>
+        <Route exact path={'/pruebas'} component={Example} />
+        <Route exact path={'/'} component={LandingPage} />
+        <Route exact path={'/pokemons'} component={HomePage} />
+        <Route exact path={'/create'} component={CreatePokemon} />
+        <Route exact path={'/pokemons/:id'} component={Detail} />
+        <Route exact path={'/not found'} component={Message} />
+        <Redirect from='*' to={'not found'} />
+      </Switch>
     </div>
   );
 }
