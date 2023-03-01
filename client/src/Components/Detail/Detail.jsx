@@ -10,10 +10,10 @@ import { deletePokemon, getPokemonDetail, setDetail } from '../../Redux/actions'
 
 export const Detail = (props) => {
     const id = props.match.params.id;
+    console.log(id);
     const history = useHistory();
     const dispatch = useDispatch();
     const Details = useSelector(state => state.detail);
-    // console.log(Details[0].name);
 
     const deleteButton = (e) => {
         e.preventDefault();

@@ -12,7 +12,7 @@ const getAllPokemons = async () => {
     });
     const apiPokemonRaw = [];
     
-    for(let i = 1; i < 81; i++) {
+    for(let i = 1; i < 21; i++) {
         const response = await axios(`https://pokeapi.co/api/v2/pokemon/${i}`)
         apiPokemonRaw.push(response.data);
     }

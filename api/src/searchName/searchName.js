@@ -4,7 +4,7 @@ const cleanArray = require('../Controllers/cleanArray');
 
 const searchNameDb = async (name) => {
     try {
-        const result = await Pokemon.findOne({
+        const result = await Pokemon.findAll({
             where: {
                 name: name.toLowerCase(),
             }, 
@@ -18,7 +18,7 @@ const searchNameDb = async (name) => {
         })
         return result;
     } catch (error) {
-        return error;
+        return [];
     }
 };
 

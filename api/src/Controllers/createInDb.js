@@ -6,8 +6,8 @@ const createInDb = async (name, hp, speed, height, attack, weight, defense, type
         where: { name: pokemon }
     });
     if(exists) throw new Error(`The pokemon with name ${pokemon} already exits😅😅!!`);
-    const id = await Pokemon.max('id');
-    const newPokemon = { name, hp, speed, height, attack, weight, defense, types, image, id:(++id) };
+    const newPokemon = { name, hp, speed, height, attack, weight, defense, image };
+    console.log(newPokemon);
     const pokemonCreate = await Pokemon.create(newPokemon);
     const typesDb = await Type.findAll({
         where: { name: types }

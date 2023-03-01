@@ -49,18 +49,23 @@ export const getAllTypes = () => {
 }
 
 //------------------------------------------------------------------------------------------------------//
-export const getPokemonByName = (name) => {
+export const getPokemonByName = (searchName) => {
     return async (dispatch) => {
         try {
-            const response = await axios(`http://localhost:3001/pokemons/?name=${name}`);
+            const response = await axios(`http://localhost:3001/pokemons/?name=${searchName}`);
             const data = response.data;
+            console.log(data);
 
             return dispatch({
                 type: GETPOKEMONBYNAME,
                 payload: data
-            })
+            });
         } catch (error) {
-            return error;
+            alert(`This pokemon with name ${searchName} not exists`);
+            return dispatch({
+                type: GETPOKEMONBYNAME,
+                payload: []
+            });
         }
     }
 }
@@ -70,7 +75,6 @@ export const getPokemonDetail = (id) => {
     return async (dispatch) => {
         try {
             const response = await axios(`http://localhost:3001/pokemons/${id}`);
-            console.log(response);
             const data = response.data;
 
             return dispatch({
@@ -156,7 +160,7 @@ export const orderByDefense = (payload) => {
         payload
     }
 }
-    
+
 //------------------------------------------------------------------------------------------------------//
 export const setLoader = () => {
     return {

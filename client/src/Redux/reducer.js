@@ -43,7 +43,7 @@ export const rootReducer = (state = intialState, action) => {
 
         case FILTERPOKEMONSBYTYPE:
             const pokemonsByType = state.pokemons;
-            const filteredTypes = action.payload === 'All' ?
+            const filteredTypes = action.payload === 'all' ?
                 pokemonsByType : pokemonsByType.filter((pokemon) => pokemon.types?.map((type) => type.name).includes(action.payload));
             return {
                 ...state,
@@ -53,11 +53,11 @@ export const rootReducer = (state = intialState, action) => {
 
         case FILTERPOKEMONSBYCREATED:
             const pokemonsByCreate = state.pokemons;
-            let filterByCreated = action.payload === 'Db' ?
+            let filterByCreated = action.payload === 'DB' ?
                 pokemonsByCreate.filter((element) => element.createInDb === true) :
                 pokemonsByCreate.filter((element) => element.createInDb === false);
 
-            if (action.payload === 'All') filterByCreated = pokemonsByCreate;
+            if (action.payload === 'all') filterByCreated = pokemonsByCreate;
             return {
                 ...state,
                 allPokemons: filterByCreated
@@ -65,13 +65,13 @@ export const rootReducer = (state = intialState, action) => {
 
         case ORDERBYNAME:
             let nameSort;
-            if (action.payload === 'ASC') {
+            if (action.payload === 'asc') {
                 nameSort = state.allPokemons.sort((a, b) => {
                     if (a.name > b.name) return 1;
                     if (a.name < b.name) return -1;
                     return 0;
                 })
-            } else if (action.payload === 'DSC') {
+            } else if (action.payload === 'dsc') {
                 nameSort = state.allPokemons.sort((a, b) => {
                     if (a.name < b.name) return 1;
                     if (a.name > b.name) return -1;
@@ -87,13 +87,13 @@ export const rootReducer = (state = intialState, action) => {
 
         case ORDERBYATTACK:
             let attackSort;
-            if (action.payload === '+ATK') {
+            if (action.payload === '+atk') {
                 attackSort = state.allPokemons.sort((a, b) => {
                     if (a.attack < b.attack) return 1;
                     if (a.attack > b.attack) return -1;
                     return 0;
                 })
-            } else if (action.payload === '-ATK') {
+            } else if (action.payload === '-atk') {
                 attackSort = state.allPokemons.sort((a, b) => {
                     if (a.attack > b.attack) return 1;
                     if (a.attack < b.attack) return -1;
@@ -109,13 +109,13 @@ export const rootReducer = (state = intialState, action) => {
 
         case ORDERBYDEFENSE:
             let defenseSort;
-            if (action.payload === '+DEF') {
+            if (action.payload === '+def') {
                 defenseSort = state.allPokemons.sort((a, b) => {
                     if (a.defense < b.defense) return 1;
                     if (a.defense > b.defense) return -1;
                     return 0;
                 })
-            } else if (action.payload === '-DEF') {
+            } else if (action.payload === '-def') {
                 defenseSort = state.allPokemons.sort((a, b) => {
                     if (a.defense > b.defense) return 1;
                     if (a.defense < b.defense) return -1;
@@ -133,7 +133,7 @@ export const rootReducer = (state = intialState, action) => {
             if (!action.payload) alert();
             return {
                 ...state,
-                allPokemons: [action.payload]
+                allPokemons: action.payload
             }
 
         case CREATEPOKEMON:
@@ -165,6 +165,6 @@ export const rootReducer = (state = intialState, action) => {
             }
 
         default:
-            return { ...state };
+            return state;
     }
 }
