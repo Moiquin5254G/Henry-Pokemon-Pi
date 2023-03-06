@@ -19,5 +19,5 @@ export const Message = () => {
                 </Link>
             </div>
         </div>
-    );
+    )
 };

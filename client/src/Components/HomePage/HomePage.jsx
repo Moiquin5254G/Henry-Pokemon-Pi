@@ -14,7 +14,9 @@ export const HomePage = () => {
     const allPokemons = useSelector((state) => state.allPokemons);
     // console.log(allPokemons);
     const allTypes = useSelector((state) => state.types);
+    console.log(allTypes);
     const loading = useSelector((state) => state.loader);
+    // console.log(loading);
     const [order, setOrder] = useState('');
     const dispatch = useDispatch();
 
@@ -33,7 +35,6 @@ export const HomePage = () => {
     const renderPokemons = allPokemons.slice(firtsPokemon, lastPokemon);
     console.log(renderPokemons);
     const Page = (pageNumber) => { setCurrentPage(pageNumber) };
-    console.log(Page);
 
     // console.log(order, setPokemonsPerPage);
 
@@ -47,6 +48,7 @@ export const HomePage = () => {
 
     const handlerFilterByType = (e) => {
         e.preventDefault();
+        console.log('MI prueba', typeFilter(e.target.value));
         dispatch(typeFilter(e.target.value));
         setCurrentPage(1);
     };
@@ -84,7 +86,7 @@ export const HomePage = () => {
 
     return (
         <>
-            {loading ? (<Loader/>) :
+            {loading ? (<Loader />) :
                 <div>
                     <SearchBar setPage={setPage} />
 
@@ -104,7 +106,6 @@ export const HomePage = () => {
                         currentPage={Page}
                         page={currentPage}
                     />
-
                     <div className='container'>
                         <div className='card-list-pokemon'>
                             {renderPokemons?.map((el) => {
@@ -112,12 +113,12 @@ export const HomePage = () => {
                                     <Fragment key={el.id}>
                                         <Card key={el.id} image={el.image} name={el.name} id={el.id} type={el.types} />
                                     </Fragment>
-                                );
-                            })};
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
-            };
+            }
         </>
-    );
-};
+    )
+}

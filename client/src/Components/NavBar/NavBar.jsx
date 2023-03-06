@@ -44,7 +44,7 @@ export const NavBar = ({
                             <option value='all'>All Types</option>
                             {
                                 allTypes?.map((type) => (<option key={type.name} value={type.name} >{type.name}</option>))
-                            };
+                            }
                         </select>
 
                         <span>Order By Attack</span>
@@ -78,5 +78,5 @@ export const NavBar = ({
                 </div>
             </div>
         </React.Fragment>
-    );
+    )
 };

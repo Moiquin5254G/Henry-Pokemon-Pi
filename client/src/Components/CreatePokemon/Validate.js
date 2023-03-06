@@ -17,6 +17,6 @@ export const validate = (info) => {
     if(info.speed <= 0) error.speed = 'Need speed🤔🤔!!';
     if(!info.name) error.name = 'You must   put a name😐😐!!';
     if(info.hp <= 0) error.hp = 'Need hp🤔🤔!!';
-    if(!validateUrl(info.image) && info.image !== '') error.image = 'Unsupported format🤔🤔!!';
+    if(validateUrl(info.image) && info.image !== '') error.image = 'Unsupported format🤔🤔!!';
     return error;
 }

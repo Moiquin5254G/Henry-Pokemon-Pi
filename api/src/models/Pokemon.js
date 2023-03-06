@@ -68,7 +68,7 @@ module.exports = (sequelize) => {
         max: 1000
       }
     },
-    createInDb: {
+    created: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true

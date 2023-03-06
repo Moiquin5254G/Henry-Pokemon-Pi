@@ -10,10 +10,11 @@ import { deletePokemon, getPokemonDetail, setDetail } from '../../Redux/actions'
 
 export const Detail = (props) => {
     const id = props.match.params.id;
-    console.log(id);
+    // console.log(id);
     const history = useHistory();
     const dispatch = useDispatch();
     const Details = useSelector(state => state.detail);
+    // console.log((Details));
 
     const deleteButton = (e) => {
         e.preventDefault();
@@ -31,7 +32,7 @@ export const Detail = (props) => {
     useEffect(() => {
         return () => {
             dispatch(setDetail());
-        };
+        }
     }, [dispatch]);
 
     return (
@@ -48,7 +49,8 @@ export const Detail = (props) => {
                                 <div className='container-info-pokemon'>
                                     <h1>{Details[0].name}</h1>
                                     <div className='card-types info-pokemon-type'>
-                                        {Details[0].types?.map((element) => (<span key={element.name} className={element.name}>{element.name}</span>))}
+                                        {Details.types?.map((element) => (<span key={element.idSearch} className={element.name}>{element.name}</span>))}
+                                        {Details[0].created ? (<h4>This pokemon has been created</h4>): <h4>This pokemon is from the api</h4>}
                                     </div>
                                     <div className='info-pokemon'>
                                         <div className='group-info'>
@@ -103,9 +105,9 @@ export const Detail = (props) => {
                                 <button onClick={(e) => deleteButton(e)}>Delete</button>
                             </div>
                         </div>
-                    ) : <Message />};
+                    ) : <Message />}
                 </div>
             ) : null}
         </>
-    );
-};
+    )
+}

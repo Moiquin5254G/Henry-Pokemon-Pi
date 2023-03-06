@@ -29,11 +29,12 @@ export const rootReducer = (state = intialState, action) => {
         case GETALLPOKEMONS:
             return {
                 ...state,
+                loader: false,
                 allPokemons: [...action.payload], //distitas copias para trabajar
                 pokemons: [...action.payload],
                 change: [...action.payload],
-                loader: false,
             };
+
 
         case GETALLTYPES:
             return {
@@ -41,27 +42,31 @@ export const rootReducer = (state = intialState, action) => {
                 types: action.payload
             };
 
+
         case FILTERPOKEMONSBYTYPE:
             const pokemonsByType = state.pokemons;
             const filteredTypes = action.payload === 'all' ?
-                pokemonsByType : pokemonsByType.filter((pokemon) => pokemon.types?.map((type) => type.name).includes(action.payload));
+                pokemonsByType : pokemonsByType.filter((pokemon) => pokemon.types.includes(action.payload));
+                console.log(pokemonsByType);
             return {
                 ...state,
                 allPokemons: filteredTypes,
                 change: [...filteredTypes]
             };
 
+
         case FILTERPOKEMONSBYCREATED:
             const pokemonsByCreate = state.pokemons;
             let filterByCreated = action.payload === 'DB' ?
-                pokemonsByCreate.filter((element) => element.createInDb === true) :
-                pokemonsByCreate.filter((element) => element.createInDb === false);
+                pokemonsByCreate.filter((element) => element.created === true) :
+                pokemonsByCreate.filter((element) => element.created === false);
 
             if (action.payload === 'all') filterByCreated = pokemonsByCreate;
             return {
                 ...state,
                 allPokemons: filterByCreated
             };
+
 
         case ORDERBYNAME:
             let nameSort;
@@ -85,6 +90,7 @@ export const rootReducer = (state = intialState, action) => {
                 allPokemons: nameSort
             }
 
+
         case ORDERBYATTACK:
             let attackSort;
             if (action.payload === '+atk') {
@@ -106,6 +112,7 @@ export const rootReducer = (state = intialState, action) => {
                 ...state,
                 allPokemons: attackSort
             }
+            
 
         case ORDERBYDEFENSE:
             let defenseSort;
@@ -129,11 +136,12 @@ export const rootReducer = (state = intialState, action) => {
                 allPokemons: defenseSort
             }
 
+
         case GETPOKEMONBYNAME:
             if (!action.payload) alert();
             return {
                 ...state,
-                allPokemons: action.payload
+                allPokemons: [...action.payload]
             }
 
         case CREATEPOKEMON:
@@ -144,7 +152,7 @@ export const rootReducer = (state = intialState, action) => {
         case GETPOKEMONDETAIL:
             return {
                 ...state,
-                detail: action.payload
+                detail: [...action.payload]
             }
 
         case SETLOADERTRUE:
@@ -161,7 +169,7 @@ export const rootReducer = (state = intialState, action) => {
         case SETDETAIL:
             return {
                 ...state,
-                details: []
+                detail: []
             }
 
         default:

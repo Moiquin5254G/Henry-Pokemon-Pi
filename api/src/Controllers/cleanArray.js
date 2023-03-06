@@ -1,5 +1,5 @@
 const cleanArray = (array) => {
-    const clean = array.map((element) => {
+    const clean = array.map(element => {
         return {
             id: element.id,
             name: element.name,
@@ -10,11 +10,13 @@ const cleanArray = (array) => {
             height: element.height,
             weight: element.weight,
             image: element.sprites.other.home.front_default,
-            Types: element.types.map((type) => ({ name: type.type.name })),
+            types: element.types.map(type => type.type.name),
             created: false
         }
-    })
+    });
+
     return clean;
 }
+
 
 module.exports = cleanArray;

@@ -15,8 +15,8 @@ export const Example = ({ name, id, image, hp, attack, defense, speed, height, w
                 <img className='poke-img' src={image} alt={name} />
             </div>
             <div>N° {id + 1}</div>
-            {types[0] && <div className={`poke-types${types[0]}`}>{types[0]}</div>};
-            {types[1] && <div className={`poke-types${types[1]}`}>{types[1]}</div>};
+            {types[0] && <div className={`poke-types${types[0]}`}>{types[0]}</div>}
+            {types[1] && <div className={`poke-types${types[1]}`}>{types[1]}</div>}
 
             <div className="poke-stats">Hp: <p>{hp}</p></div>
             <div className="poke-stats">Attack: <p>{attack}</p></div>

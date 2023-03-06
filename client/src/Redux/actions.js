@@ -37,6 +37,7 @@ export const getAllTypes = () => {
         try {
             const response = await axios('http://localhost:3001/types');
             const data = response.data;
+            console.log(data);
 
             return dispatch({
                 type: GETALLTYPES,
@@ -54,18 +55,19 @@ export const getPokemonByName = (searchName) => {
         try {
             const response = await axios(`http://localhost:3001/pokemons/?name=${searchName}`);
             const data = response.data;
-            console.log(data);
+            // console.log(data);
 
             return dispatch({
                 type: GETPOKEMONBYNAME,
                 payload: data
             });
         } catch (error) {
-            alert(`This pokemon with name ${searchName} not exists`);
-            return dispatch({
-                type: GETPOKEMONBYNAME,
-                payload: []
-            });
+            // alert(`This pokemon with name ${searchName} not exists`);
+            // return dispatch({
+            //     type: GETPOKEMONBYNAME,
+            //     payload: []
+            // });
+            return error
         }
     }
 }
@@ -76,10 +78,11 @@ export const getPokemonDetail = (id) => {
         try {
             const response = await axios(`http://localhost:3001/pokemons/${id}`);
             const data = response.data;
+            // console.log([data]);
 
             return dispatch({
                 type: GETPOKEMONDETAIL,
-                payload: data
+                payload: [data]
             })
         } catch (error) {
             return error;
@@ -91,7 +94,7 @@ export const getPokemonDetail = (id) => {
 export const postPokemon = (payload) => {
     return async (dispatch) => {
         try {
-            const response = await axios('http://localhost3001/pokemons', payload);
+            const response = await axios.post('http://localhost:3001/pokemons', payload);
             const data = response.data;
 
             return dispatch({
@@ -99,7 +102,7 @@ export const postPokemon = (payload) => {
                 payload: data
             })
         } catch (error) {
-            return error;
+            console.log(error);
         }
     }
 }
@@ -108,7 +111,7 @@ export const postPokemon = (payload) => {
 export const deletePokemon = (id) => {
     return async (dispatch) => {
         try {
-            const response = await axios.delete(`http://localhost3001/pokemons/${id}`)
+            const response = await axios.delete(`http://localhost:3001/pokemons/${id}`)
             const data = response.data;
 
             return dispatch({
@@ -122,10 +125,10 @@ export const deletePokemon = (id) => {
 }
 
 //------------------------------------------------------------------------------------------------------//
-export const typeFilter = (payload) => {
+export const typeFilter = (types) => {
     return {
         type: FILTERPOKEMONSBYTYPE,
-        payload
+        payload: types
     }
 }
 

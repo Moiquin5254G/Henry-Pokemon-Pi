@@ -17,10 +17,10 @@ export const Paginated = ({ pokemonsInPage, allPokemons, currentPage, page }) =>
                 <button className="btnNav" style={page <= 1 ? { display: 'none' } : {}} onClick={() => currentPage(page - 1)}><FontAwesomeIcon icon={faChevronLeft} /></button>
                 {numPages && numPages.map((num) => {
                     return <button className="page" key={num} onClick={() => currentPage(num)} >{num}</button>
-                })};
+                })}
                 <button className="btnNav" style={page >= numPages.length ? { display: "none" } : {}} onClick={() => currentPage(page + 1)} ><FontAwesomeIcon icon={faChevronRight} /></button>
             </div>
             <p>Page {page} of {numPages.length}</p>
         </div>
-    );
+    )
 };
