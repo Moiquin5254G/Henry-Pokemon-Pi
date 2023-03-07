@@ -12,11 +12,8 @@ import { filterByCreated, getAllPokemons, getAllTypes, orderByAttack, orderByDef
 
 export const HomePage = () => {
     const allPokemons = useSelector((state) => state.allPokemons);
-    // console.log(allPokemons);
     const allTypes = useSelector((state) => state.types);
-    console.log(allTypes);
     const loading = useSelector((state) => state.loader);
-    // console.log(loading);
     const [order, setOrder] = useState('');
     const dispatch = useDispatch();
 
@@ -33,10 +30,9 @@ export const HomePage = () => {
     const lastPokemon = currentPage * pokemonsInPage;
     const firtsPokemon = lastPokemon - pokemonsInPage;
     const renderPokemons = allPokemons.slice(firtsPokemon, lastPokemon);
-    console.log(renderPokemons);
     const Page = (pageNumber) => { setCurrentPage(pageNumber) };
 
-    // console.log(order, setPokemonsPerPage);
+    console.log(order, setPokemonsPerPage);
 
     //MANEJADORES DE EVENTOS:
 

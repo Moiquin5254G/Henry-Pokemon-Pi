@@ -13,7 +13,7 @@ export const Card = ({ image, name, id, types }) => {
                 <span className='pokemon-id'>N° {id}</span>
                 <h3>{name}!</h3>
                 <div className='card-types'>
-                    {types?.map((element) => (console.log('Muestra',element), <span key={element.idSearch} className={element.name}>{element.name}</span>))}
+                    {types?.map((element) => (<span key={element.idSearch} className={element.name}>{element.name}</span>))}
                 </div>
             </div>
         </Link>
