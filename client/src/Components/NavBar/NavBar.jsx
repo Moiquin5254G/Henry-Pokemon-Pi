@@ -43,7 +43,7 @@ export const NavBar = ({
                         <select onChange={(e) => handlerFilterByType(e)}>
                             <option value='all'>All Types</option>
                             {
-                                allTypes?.map((type) => (<option key={type.name} value={type.name} >{type.name}</option>))
+                                allTypes.map((type) => (<option key={type.name} value={type.name} >{type.name}</option>))
                             }
                         </select>
 
