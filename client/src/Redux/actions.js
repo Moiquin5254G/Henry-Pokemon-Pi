@@ -37,7 +37,6 @@ export const getAllTypes = () => {
         try {
             const response = await axios('types');
             const data = response.data;
-            console.log(data);
 
             return dispatch({
                 type: GETALLTYPES,
