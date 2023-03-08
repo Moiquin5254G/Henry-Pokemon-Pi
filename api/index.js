@@ -23,7 +23,7 @@ require('dotenv').config();
 const { PORT } = process.env;
 
 // Syncing all the models at once.
-conn.sync({ alter: false }).then(async() => {
+conn.sync({ alter: true }).then(async() => {
   server.listen(PORT, () => {
     console.log('%s listening at', PORT); // eslint-disable-line no-console
   });

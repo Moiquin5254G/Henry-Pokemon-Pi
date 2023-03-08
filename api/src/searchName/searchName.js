@@ -28,7 +28,6 @@ const searchNameApi = async (name) => {
     try {
         const data = await axios(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
         const result = data.data;
-        console.log(result);
         return await cleanArray([result]);
     } catch (error) {
         return [];

@@ -20,6 +20,7 @@ export const getAllPokemons = () => {
         try {
             const response = await axios.get('https://henry-pokemon-pi-production.up.railway.app/pokemons');
             const data = response.data;
+            console.log(data);
 
             return dispatch({
                 type: GETALLPOKEMONS,
@@ -37,6 +38,7 @@ export const getAllTypes = () => {
         try {
             const response = await axios.get('https://henry-pokemon-pi-production.up.railway.app/types');
             const data = response.data;
+            console.log(data);
 
             return dispatch({
                 type: GETALLTYPES,

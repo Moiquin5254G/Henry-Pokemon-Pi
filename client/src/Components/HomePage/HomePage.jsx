@@ -30,6 +30,7 @@ export const HomePage = () => {
     const lastPokemon = currentPage * pokemonsInPage;
     const firtsPokemon = lastPokemon - pokemonsInPage;
     const renderPokemons = allPokemons.slice(firtsPokemon, lastPokemon);
+    console.log(renderPokemons);
     const Page = (pageNumber) => { setCurrentPage(pageNumber) };
 
     console.log(order, setPokemonsPerPage);
@@ -44,7 +45,6 @@ export const HomePage = () => {
 
     const handlerFilterByType = (e) => {
         e.preventDefault();
-        console.log('MI prueba', typeFilter(e.target.value));
         dispatch(typeFilter(e.target.value));
         setCurrentPage(1);
     };
