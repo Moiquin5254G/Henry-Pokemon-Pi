@@ -141,7 +141,7 @@ export const rootReducer = (state = intialState, action) => {
             if (!action.payload) alert();
             return {
                 ...state,
-                allPokemons: [action.payload]
+                allPokemons: action.payload
             }
 
         case CREATEPOKEMON:
@@ -152,7 +152,7 @@ export const rootReducer = (state = intialState, action) => {
         case GETPOKEMONDETAIL:
             return {
                 ...state,
-                detail: [action.payload]
+                detail: action.payload
             }
 
         case SETLOADERTRUE:
