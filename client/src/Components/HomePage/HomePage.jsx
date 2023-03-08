@@ -28,11 +28,8 @@ export const HomePage = () => {
     const [pokemonsInPage, setPokemonsPerPage] = useState(12);
     const [currentPage, setCurrentPage] = useState(1);
     const lastPokemon = currentPage * pokemonsInPage;
-    console.log(lastPokemon);
     const firtsPokemon = lastPokemon - pokemonsInPage;
-    console.log(firtsPokemon);
     const renderPokemons = allPokemons.slice(firtsPokemon, lastPokemon);
-    console.log(renderPokemons);
     const Page = (pageNumber) => { setCurrentPage(pageNumber) };
 
     console.log(order, setPokemonsPerPage);

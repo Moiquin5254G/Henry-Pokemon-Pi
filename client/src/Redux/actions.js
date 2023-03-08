@@ -18,9 +18,8 @@ import axios from 'axios';
 export const getAllPokemons = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get('pokemons');
+            const response = await axios('pokemons');
             const data = response.data;
-            console.log(data);
 
             return dispatch({
                 type: GETALLPOKEMONS,
@@ -36,7 +35,7 @@ export const getAllPokemons = () => {
 export const getAllTypes = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get('types');
+            const response = await axios('types');
             const data = response.data;
             console.log(data);
 
@@ -54,7 +53,7 @@ export const getAllTypes = () => {
 export const getPokemonByName = (searchName) => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`pokemons/?name=${searchName}`);
+            const response = await axios(`pokemons/?name=${searchName}`);
             const data = response.data;
             // console.log(data);
 
@@ -77,7 +76,7 @@ export const getPokemonByName = (searchName) => {
 export const getPokemonDetail = (id) => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`pokemons/${id}`);
+            const response = await axios(`pokemons/${id}`);
             const data = response.data;
             // console.log([data]);
 
