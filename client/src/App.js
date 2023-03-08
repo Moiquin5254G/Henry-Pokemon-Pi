@@ -7,7 +7,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { LandingPage } from './Components/LandingPage/LandingPage';
 import { CreatePokemon } from './Components/CreatePokemon/CreatePokemon';
 import axios from 'axios';
-axios.defaults.baseURL = 'https://henry-pokemon-altxnqqnu-moiquin5254g.vercel.app/'
+axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
   return (
