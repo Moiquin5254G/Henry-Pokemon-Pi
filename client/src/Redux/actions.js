@@ -18,7 +18,7 @@ import axios from 'axios';
 export const getAllPokemons = () => {
     return async (dispatch) => {
         try {
-            const response = await axios('https://henry-pokemon-pi-production.up.railway.app/pokemons');
+            const response = await axios.get('https://henry-pokemon-pi-production.up.railway.app/pokemons');
             const data = response.data;
 
             return dispatch({
@@ -35,7 +35,7 @@ export const getAllPokemons = () => {
 export const getAllTypes = () => {
     return async (dispatch) => {
         try {
-            const response = await axios('https://henry-pokemon-pi-production.up.railway.app/types');
+            const response = await axios.get('https://henry-pokemon-pi-production.up.railway.app/types');
             const data = response.data;
 
             return dispatch({
@@ -52,7 +52,7 @@ export const getAllTypes = () => {
 export const getPokemonByName = (searchName) => {
     return async (dispatch) => {
         try {
-            const response = await axios(`https://henry-pokemon-pi-production.up.railway.app/pokemons/?name=${searchName}`);
+            const response = await axios.get(`https://henry-pokemon-pi-production.up.railway.app/pokemons/?name=${searchName}`);
             const data = response.data;
             // console.log(data);
 
@@ -75,7 +75,7 @@ export const getPokemonByName = (searchName) => {
 export const getPokemonDetail = (id) => {
     return async (dispatch) => {
         try {
-            const response = await axios(`https://henry-pokemon-pi-production.up.railway.app/pokemons/${id}`);
+            const response = await axios.get(`https://henry-pokemon-pi-production.up.railway.app/pokemons/${id}`);
             const data = response.data;
             // console.log([data]);
 
