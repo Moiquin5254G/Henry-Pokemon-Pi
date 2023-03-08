@@ -18,7 +18,7 @@ import axios from 'axios';
 export const getAllPokemons = () => {
     return async (dispatch) => {
         try {
-            const response = await axios('http://localhost:3001/pokemons');
+            const response = await axios('pokemons');
             const data = response.data;
 
             return dispatch({
@@ -35,7 +35,7 @@ export const getAllPokemons = () => {
 export const getAllTypes = () => {
     return async (dispatch) => {
         try {
-            const response = await axios('http://localhost:3001/types');
+            const response = await axios('types');
             const data = response.data;
             console.log(data);
 
@@ -53,7 +53,7 @@ export const getAllTypes = () => {
 export const getPokemonByName = (searchName) => {
     return async (dispatch) => {
         try {
-            const response = await axios(`http://localhost:3001/pokemons/?name=${searchName}`);
+            const response = await axios(`pokemons/?name=${searchName}`);
             const data = response.data;
             // console.log(data);
 
@@ -76,7 +76,7 @@ export const getPokemonByName = (searchName) => {
 export const getPokemonDetail = (id) => {
     return async (dispatch) => {
         try {
-            const response = await axios(`http://localhost:3001/pokemons/${id}`);
+            const response = await axios(`pokemons/${id}`);
             const data = response.data;
             // console.log([data]);
 
@@ -94,7 +94,7 @@ export const getPokemonDetail = (id) => {
 export const postPokemon = (payload) => {
     return async (dispatch) => {
         try {
-            const response = await axios.post('http://localhost:3001/pokemons', payload);
+            const response = await axios.post('pokemons', payload);
             const data = response.data;
 
             return dispatch({
@@ -111,7 +111,7 @@ export const postPokemon = (payload) => {
 export const deletePokemon = (id) => {
     return async (dispatch) => {
         try {
-            const response = await axios.delete(`http://localhost:3001/pokemons/${id}`)
+            const response = await axios.delete(`pokemons/${id}`)
             const data = response.data;
 
             return dispatch({
